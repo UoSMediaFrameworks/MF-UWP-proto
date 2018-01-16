@@ -11,7 +11,7 @@
     <AssemblyName>MF_UWP_proto</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.15063.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -92,6 +92,9 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Markdown">
+      <Version>2.2.1</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.1</Version>
     </PackageReference>
@@ -111,6 +114,9 @@
     <PackageReference Include="MvvmLight">
       <Version>5.3.0</Version>
     </PackageReference>
+    <PackageReference Include="SocketIoClientDotNet">
+      <Version>1.0.4</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\en-us\Resources.resw" />
@@ -119,13 +125,18 @@
     <Compile Include="Activation\ActivationHandler.cs" />
     <Compile Include="BackgroundTasks\BackgroundTask.cs" />
     <Compile Include="BackgroundTasks\BackgroundTask1.cs" />
+    <Compile Include="Helpers\HardcodedObjects.cs" />
     <Compile Include="Helpers\Json.cs" />
+    <Compile Include="Helpers\SessionHelper.cs" />
     <Compile Include="Helpers\SettingsStorageExtensions.cs" />
+    <Compile Include="Helpers\SocketHelper.cs" />
     <Compile Include="Helpers\TaskExtensions.cs" />
     <Compile Include="Models\DragDropCompletedData.cs" />
     <Compile Include="Models\DragDropData.cs" />
     <Compile Include="Models\DragDropStartingData.cs" />
+    <Compile Include="Models\MediaAssetObject.cs" />
     <Compile Include="Models\SampleOrder.cs" />
+    <Compile Include="Models\Token.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultLaunchActivationHandler.cs" />
     <Compile Include="Services\BackgroundTaskService.cs" />
@@ -224,7 +235,12 @@
     <Compile Include="Helpers\ResourceExtensions.cs" />
     <Compile Include="Helpers\Singleton.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\uwp_api_client_0_0_3rc13\src\IO.Swagger\IO.Swagger.csproj">
+      <Project>{58aad299-22f6-4a03-b6bb-146e56dea37d}</Project>
+      <Name>IO.Swagger</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

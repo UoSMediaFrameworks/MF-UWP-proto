@@ -31,7 +31,7 @@ namespace MF_UWP_proto.ViewModels
         public async Task LoadDataAsync(MasterDetailsViewState viewState)
         {
             SampleItems.Clear();
-
+            //This is where the subset of data is loaded
             var data = await SampleDataService.GetSampleModelDataAsync();
 
             foreach (var item in data)
