@@ -17,10 +17,13 @@ namespace MF_UWP_proto.ViewModels
 
             SimpleIoc.Default.Register(() => new NavigationServiceEx());
             Register<PivotViewModel, PivotPage>();
+            Register<LoginViewModel, Login>();
             Register<MainViewModel, MainPage>();
             Register<MasterDetailViewModel, MasterDetailPage>();
             Register<MediaPlayerViewModel, MediaPlayerPage>();
         }
+
+        public LoginViewModel LoginViewModel => ServiceLocator.Current.GetInstance<LoginViewModel>();
 
         public MediaPlayerViewModel MediaPlayerViewModel => ServiceLocator.Current.GetInstance<MediaPlayerViewModel>();
 

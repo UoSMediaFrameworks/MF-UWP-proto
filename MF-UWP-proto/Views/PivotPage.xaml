@@ -12,6 +12,11 @@
 
     <Grid>
         <Pivot x:Uid="PivotPage">
+            <PivotItem x:Uid="PivotItem_Login">
+                <Frame>
+                    <views:Login/>
+                </Frame>
+            </PivotItem>
             <PivotItem x:Uid="PivotItem_Main">
                 <Frame>
                     <views:MainPage/>
