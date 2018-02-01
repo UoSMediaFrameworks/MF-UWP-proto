@@ -140,6 +140,12 @@
   <data name="PivotItem_Main.Header" xml:space="preserve">
     <value>Main</value>
     <comment>Pivot item header for Main</comment>
+      </data>
+  <data name="PivotItem_Login.Header" xml:space="preserve">
+  <value>Login</value>
+  <comment>Pivot item header for Main</comment> 
+  
+    
   </data>
   <data name="MasterDetail_Title.Text" xml:space="preserve">
     <value>MasterDetail</value>

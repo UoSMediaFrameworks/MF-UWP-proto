@@ -11,20 +11,17 @@ namespace MF_UWP_proto.Views
     {
 
 
-        public static MainPage Current;
-        public static DefaultApi DefaultAPI;
-        public static dynamic randomVP;
+
         private MainViewModel ViewModel
         {
             get { return DataContext as MainViewModel; }
         }
-
         public MainPage()
-        {
-            Current = this;
+        {   
             SessionHelper.LoadSessionAsync();
-            DefaultAPI = new DefaultApi();
             InitializeComponent();
         }
+
+     
     }
 }

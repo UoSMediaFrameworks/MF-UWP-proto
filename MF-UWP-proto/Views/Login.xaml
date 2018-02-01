@@ -9,16 +9,36 @@
     DataContext="{Binding LoginViewModel, Source={StaticResource Locator}}"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    
-            <TextBlock Text="Login" FontSize="36" Margin="4" TextAlignment="Center"/>
-            <TextBlock x:Name="ErrorMessage" Text="" FontSize="20" Margin="4" Foreground="Red" TextAlignment="Center" />
-            <TextBlock Text="Enter your username below" Margin="573,470,627,509"
-               TextWrapping="Wrap" Width="300"
-               TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
-            <TextBox x:Name="UsernameTextBox" Margin="561,515,583,453" />
-            <Button x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White"
-        Click="PassportSignInButton_Click" Width="80" HorizontalAlignment="Center" Margin="694,566,726,402" RenderTransformOrigin="0.423,0.359"/>
-      
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" BorderBrush="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="TitleRow" Height="48"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            x:Name="TitlePage"
+            x:Uid="Login_Title"
+            Style="{StaticResource PageTitleStyle}" />
+
+        <Grid 
+            Grid.Row="1" Grid.Column="1"
+            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
+                Place your content here.-->
+            <TextBlock Text="Login" FontSize="36" Margin="4" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock x:Name="ErrorMessage" Text="" FontSize="20"  Foreground="Red"   HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Text="Enter your username below" 
+               TextWrapping="Wrap" 
+               TextAlignment="Center" FontSize="16"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Margin="0,-121,0,0" />
+            <TextBox x:Name="UsernameTextBox"   HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Margin="0,-64,0,0" />
+            <Button x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White" 
+        Click="PassportSignInButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" />
+
+
+        </Grid>
     </Grid>
 </Page>

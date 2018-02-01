@@ -1,4 +1,5 @@
 ﻿using IO.Swagger.Model;
+using MF_UWP_proto.ViewModels;
 using MF_UWP_proto.Views;
 using System;
 using System.Collections.Generic;
@@ -16,21 +17,31 @@ namespace MF_UWP_proto.Models
 {
     class MediaAssetObject : MediaAssetSchema
     {
+
+        private static Panel currentViewer;
+
+            
         private dynamic elementRef = null;
+
+        public MediaAssetObject()
+        {
+        }
+        public MediaAssetObject(MediaAssetSchema mo)
+        {
+            this = mo;
+        }
+        public static Panel CurrentViewer { get => currentViewer; set => currentViewer = value; }
+
         public async void RenderElement()
         {
 
-
-            //var element = getRenderElementByType(this.);
-
-
-            Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+           await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
 () =>
 {
-    var grid = MainPage.randomVP.mediaGrid;
+  
     elementRef = GetRenderElementByType();
-    elementRef.Margin = addRandomMargin(grid);
-    grid.Children.Add(elementRef);
+    elementRef.Margin = addRandomMargin(currentViewer);
+    currentViewer.Children.Add(elementRef);
 }
 );
 
@@ -46,7 +57,6 @@ namespace MF_UWP_proto.Models
                     newText.Name = Id;
                     newText.Text = this.Text;
                     return newText;
-                    break;
                 case "video":
                     MediaPlayerElement mediaPlayer = new MediaPlayerElement();
                     try
@@ -66,12 +76,10 @@ namespace MF_UWP_proto.Models
                     mediaPlayer.Name = Id;
                     mediaPlayer.AreTransportControlsEnabled = true;
                     return mediaPlayer;
-                    break;
                 case "audio":
                     TextBlock newSound = new TextBlock();
                     newSound.Text = this.Id;
                     return newSound;
-                    break;
                 case "image":
                     if (this.Url != null)
                     {
@@ -98,8 +106,6 @@ namespace MF_UWP_proto.Models
                         newText2.Text = "Aaron is a troll";
                         return newText2;
                     }
-
-                    break;
                 default: throw new ArgumentOutOfRangeException();
 
 
@@ -118,16 +124,10 @@ namespace MF_UWP_proto.Models
         }
         public async void removeRenderedElement()
         {
-
-            //var element = getRenderElementByType(this.);
-
-
-            Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+           await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
             () =>
             {
-                var grid = MainPage.randomVP.mediaGrid;
-
-                grid.Children.Remove(elementRef);
+               currentViewer.Children.Remove(elementRef);
             }
             );
 

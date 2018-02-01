@@ -84,13 +84,9 @@ namespace MF_UWP_proto.Helpers
                     IDictionary<string, JToken> dictionary = obj;
                     if (dictionary.ContainsKey("value"))
                     {
-                        var test = obj["value"];
-                        var hello = test.ToObject<MediaAssetObject>();
-
+                        var objValue = obj["value"];
+                        var hello = objValue.ToObject<MediaAssetObject>();                 
                         hello.RenderElement();
-
-                        // hello.removeRenderedElement();
-
                     }
                 }
                 catch (Exception ex)
