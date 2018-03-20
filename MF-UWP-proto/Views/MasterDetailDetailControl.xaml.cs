@@ -31,7 +31,7 @@ namespace MF_UWP_proto.Views
         }
         private void MasterDetailControlPage_Loaded(object sender, RoutedEventArgs e)
         {
-             RenderHelper.CurrentViewer= MediaViewer;
+            
         }
         private static void OnMasterMenuItemPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

@@ -1,5 +1,6 @@
 ﻿using IO.Swagger.Model;
 using System;
+using System.Threading.Tasks;
 using Windows.Media.Core;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
@@ -12,51 +13,38 @@ namespace MF_UWP_proto.Helpers
 {
     class RenderHelper
     {
-
         /*
          * This class is made to help with rendering media elements to an active parent element.
          * A viewer needs to be set at the application level, which will be the instance that 
          */
 
-        private static Panel currentViewer;
 
-        
         private dynamic _elementRef = null;
-        private static RenderHelper instance;
-        public static Panel CurrentViewer
+        private static RenderHelper _instance;
+
+        private RenderHelper()
         {
-            get => currentViewer;
-            set => currentViewer = value;
-        }
-        private RenderHelper() { }
-        public static RenderHelper Instance => instance ?? (instance = new RenderHelper());
-
-        public async void RenderElement(MediaAssetSchema asset)
-        {
-            if(currentViewer != null)
-            {
-
-            await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
-             () => {
-
-                 _elementRef = GetRenderElementByType(asset);
-                 _elementRef.Margin = addRandomMargin(currentViewer);
-                 currentViewer.Children.Add(_elementRef);
-             }
-            );
-
-            }
-
         }
 
-        private dynamic GetRenderElementByType(MediaAssetSchema asset)
+        public static RenderHelper Instance => _instance ?? (_instance = new RenderHelper());
+
+        public dynamic RenderElement(MediaAssetSchema asset)
+        {
+            _elementRef = GetRenderElementByType(asset);
+          
+            return _elementRef;
+        }
+
+        public static dynamic GetRenderElementByType(MediaAssetSchema asset)
         {
             switch (asset.Type)
             {
                 case "text":
-                    TextBlock newText = new TextBlock();
-                    newText.Name = asset.Id;
-                    newText.Text = asset.Text;
+                    TextBlock newText = new TextBlock
+                    {
+                        Name = asset.Id,
+                        Text = asset.Text
+                    };
                     return newText;
                 case "video":
                     MediaPlayerElement mediaPlayer = new MediaPlayerElement();
@@ -73,26 +61,28 @@ namespace MF_UWP_proto.Helpers
                             // For example: Log error or notify user problem with file
                         }
                     }
+
                     mediaPlayer.AutoPlay = true;
                     mediaPlayer.Name = asset.Id;
                     mediaPlayer.AreTransportControlsEnabled = true;
                     return mediaPlayer;
                 case "audio":
-                    TextBlock newSound = new TextBlock();
-                    newSound.Text = asset.Id;
+                    TextBlock newSound = new TextBlock
+                    {
+                        Text = asset.Id
+                    };
                     return newSound;
                 case "image":
                     if (asset.Url != null)
                     {
-                        Image newImage = new Image();
-                        BitmapImage bitmap = new BitmapImage();
+                        var newImage = new Image();
+                        var bitmap = new BitmapImage();
                         newImage.CacheMode = new BitmapCache();
 
-                        Uri tempValue;
-                        if (Uri.TryCreate(asset.Url, UriKind.RelativeOrAbsolute, out tempValue))
+                        if (Uri.TryCreate(asset.Url, UriKind.RelativeOrAbsolute, out var tempValue))
                         {
-
                         }
+
                         bitmap.UriSource = new Uri(asset.Url, UriKind.RelativeOrAbsolute);
                         newImage.Name = asset.Id;
                         newImage.Source = bitmap;
@@ -102,36 +92,30 @@ namespace MF_UWP_proto.Helpers
                     }
                     else
                     {
-                        TextBlock newText2 = new TextBlock();
-                        newText2.Name = asset.Id;
-                        newText2.Text = "Aaron is a troll";
+                        var newText2 = new TextBlock
+                        {
+                            Name = asset.Id,
+                            Text = "Aaron is a troll"
+                        };
                         return newText2;
                     }
                 default:
                     throw new ArgumentOutOfRangeException();
-
-
             }
         }
-        private Thickness addRandomMargin(dynamic elementParent)
+
+        public static Thickness AddRandomMargin(dynamic elementParent)
         {
-            Random rnd = new Random();
-            Thickness margin = new Thickness();
-            margin.Bottom = Convert.ToDouble(rnd.Next(0, (int)elementParent.RenderSize.Height / 3));
-            margin.Left = Convert.ToDouble(rnd.Next(0, (int)elementParent.RenderSize.Width / 3));
-            margin.Top = Convert.ToDouble(rnd.Next(0, (int)elementParent.RenderSize.Height / 3));
-            margin.Right = Convert.ToDouble(rnd.Next(0, (int)elementParent.RenderSize.Width / 3));
+            var rnd = new Random();
+            var margin = new Thickness
+            {
+                Bottom = Convert.ToDouble(rnd.Next(0, (int) elementParent.RenderSize.Height / 3)),
+                Left = Convert.ToDouble(rnd.Next(0, (int) elementParent.RenderSize.Width / 3)),
+                Top = Convert.ToDouble(rnd.Next(0, (int) elementParent.RenderSize.Height / 3)),
+                Right = Convert.ToDouble(rnd.Next(0, (int) elementParent.RenderSize.Width / 3))
+            };
 
             return margin;
-        }
-        public async void removeRenderedElement()
-        {
-            await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
-             () => {
-                 currentViewer.Children.Remove(_elementRef);
-             }
-            );
-
         }
     }
 }

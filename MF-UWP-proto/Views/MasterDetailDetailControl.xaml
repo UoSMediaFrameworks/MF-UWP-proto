@@ -21,7 +21,7 @@
                     Text="{x:Bind MasterMenuItem.Name, Mode=OneWay}"
                     Style="{StaticResource SubheaderTextBlockStyle}" />
             </StackPanel>
-            <Grid Name="MediaViewer" Background="Black" >
+            <Grid x:Name="MediaViewer" Background="Black" >
                 
             </Grid>
         </StackPanel>

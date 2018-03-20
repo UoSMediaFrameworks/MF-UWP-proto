@@ -27,32 +27,7 @@ namespace MF_UWP_proto.Views
             //load date if list exists
             await ViewModel.LoadDataAsync(MasterDetailsViewControl.ViewState);
         }
-        private async void GetScenebyId(MediaSceneForListSchema selectedItem)
-        {
-            try
-            {
-                //var task = MainPage.DefaultAPI.SceneFullGetAsync(selectedItem.Id);
-                var task = ViewModel.api.SceneFullGetAsync(selectedItem.Id);
-
-                var scene = await task;
-                var mediaAssetList = scene.Scene;
-
-                //Debug.WriteLine("SceneFullGetAsync successfull+ " + scene);
-                //WriteToConsole(mediaAssetList);
-                foreach (MediaAssetSchema o in mediaAssetList)
-                {
-                   // showMediaObjectWS(o);
-                    ShowMediaObjectClientSided(o);
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("SceneFullGetAsync has failed" + ex.Message);
-            }
-
-        }
+        
 
         private static void ShowMediaObjectClientSided(MediaAssetSchema mo)
         {
@@ -76,11 +51,8 @@ namespace MF_UWP_proto.Views
         private void MasterDetailsViewControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selected = ((sender as MasterDetailsView)?.SelectedItem as MediaSceneForListSchema);
-            while (ViewModel.MediaGrid.Children.Count > 0)
-            {
-                ViewModel.MediaGrid.Children.RemoveAt(0);
-            }
-            GetScenebyId(selected);
+          
+           ViewModel.GetScenebyId(selected);
         }
     }
 }
