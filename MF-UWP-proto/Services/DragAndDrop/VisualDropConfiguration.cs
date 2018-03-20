@@ -25,37 +25,37 @@ namespace MF_UWP_proto.Services.DragAndDrop
 
         public string Caption
         {
-            get { return (string)GetValue(CaptionProperty); }
+            get => (string)GetValue(CaptionProperty);
             set { SetValue(CaptionProperty, value); }
         }
 
         public bool IsCaptionVisible
         {
-            get { return (bool)GetValue(IsCaptionVisibleProperty); }
+            get => (bool)GetValue(IsCaptionVisibleProperty);
             set { SetValue(IsCaptionVisibleProperty, value); }
         }
 
         public bool IsContentVisible
         {
-            get { return (bool)GetValue(IsContentVisibleProperty); }
+            get => (bool)GetValue(IsContentVisibleProperty);
             set { SetValue(IsContentVisibleProperty, value); }
         }
 
         public bool IsGlyphVisible
         {
-            get { return (bool)GetValue(IsGlyphVisibleProperty); }
+            get => (bool)GetValue(IsGlyphVisibleProperty);
             set { SetValue(IsGlyphVisibleProperty, value); }
         }
 
         public ImageSource DragStartingImage
         {
-            get { return (ImageSource)GetValue(DragStartingImageProperty); }
+            get => (ImageSource)GetValue(DragStartingImageProperty);
             set { SetValue(DragStartingImageProperty, value); }
         }
 
         public ImageSource DropOverImage
         {
-            get { return (ImageSource)GetValue(DropOverImageProperty); }
+            get => (ImageSource)GetValue(DropOverImageProperty);
             set { SetValue(DropOverImageProperty, value); }
         }
     }

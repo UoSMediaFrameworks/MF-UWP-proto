@@ -12,13 +12,7 @@ namespace MF_UWP_proto.Activation
     {
         private readonly string _navElement;
 
-        private NavigationServiceEx NavigationService
-        {
-            get
-            {
-                return Microsoft.Practices.ServiceLocation.ServiceLocator.Current.GetInstance<NavigationServiceEx>();
-            }
-        }
+        private NavigationServiceEx NavigationService => Microsoft.Practices.ServiceLocation.ServiceLocator.Current.GetInstance<NavigationServiceEx>();
 
         public DefaultLaunchActivationHandler(Type navElement)
         {

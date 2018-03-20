@@ -12,14 +12,13 @@ namespace MF_UWP_proto.Views
 
 
 
-        private MainViewModel ViewModel
-        {
-            get { return DataContext as MainViewModel; }
-        }
+        private MainViewModel ViewModel => DataContext as MainViewModel;
+
         public MainPage()
         {   
-            SessionHelper.LoadSessionAsync();
+            
             InitializeComponent();
+           
         }
 
      

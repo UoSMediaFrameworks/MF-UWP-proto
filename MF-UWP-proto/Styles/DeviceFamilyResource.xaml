@@ -1,0 +1,7 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <x:String x:Key="Desktop">Windows.Desktop</x:String>
+    <x:String x:Key="Mobile">Windows.Mobile</x:String>
+    <x:String x:Key="Xbox">Windows.Xbox</x:String>
+</ResourceDictionary>

@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       Style="{StaticResource PageStyle}"
-    DataContext="{Binding LoginViewModel, Source={StaticResource Locator}}"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" BorderBrush="Black">
@@ -34,7 +33,7 @@
             <TextBlock Text="Enter your username below" 
                TextWrapping="Wrap" 
                TextAlignment="Center" FontSize="16"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Margin="0,-121,0,0" />
-            <TextBox x:Name="UsernameTextBox"   HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Margin="0,-64,0,0" />
+            <PasswordBox x:Name="UsernameTextBox"   HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Margin="0,-64,0,0" />
             <Button x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White" 
         Click="PassportSignInButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" />
 

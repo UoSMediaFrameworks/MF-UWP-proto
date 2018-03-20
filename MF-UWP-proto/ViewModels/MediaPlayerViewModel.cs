@@ -20,16 +20,16 @@ namespace MF_UWP_proto.ViewModels
 
         public IMediaPlaybackSource Source
         {
-            get { return _source; }
-            set { Set(ref _source, value); }
+            get => _source;
+            private set => Set(ref _source, value);
         }
 
         private string _posterSource;
 
         public string PosterSource
         {
-            get { return _posterSource; }
-            set { Set(ref _posterSource, value); }
+            get => _posterSource;
+            private set => Set(ref _posterSource, value);
         }
 
         public MediaPlayerViewModel()

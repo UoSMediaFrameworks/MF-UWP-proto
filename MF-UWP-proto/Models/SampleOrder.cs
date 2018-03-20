@@ -23,20 +23,11 @@ namespace MF_UWP_proto.Models
 
         public Symbol Symbol { get; set; }
 
-        public char SymbolAsChar
-        {
-            get { return (char)Symbol; }
-        }
+        public char SymbolAsChar => (char)Symbol;
 
-        public string HashIdentIcon
-        {
-            get { return GetHashCode().ToString() + "-icon"; }
-        }
+        public string HashIdentIcon => GetHashCode().ToString() + "-icon";
 
-        public string HashIdentTitle
-        {
-            get { return GetHashCode().ToString() + "-title"; }
-        }
+        public string HashIdentTitle => GetHashCode().ToString() + "-title";
 
         public override string ToString()
         {

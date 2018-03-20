@@ -14,13 +14,13 @@ namespace MF_UWP_proto.Services.DragAndDrop
 
         public ICommand DragItemsStartingCommand
         {
-            get { return (ICommand)GetValue(DragItemsStartingCommandProperty); }
+            get => (ICommand)GetValue(DragItemsStartingCommandProperty);
             set { SetValue(DragItemsStartingCommandProperty, value); }
         }
 
         public ICommand DragItemsCompletedCommand
         {
-            get { return (ICommand)GetValue(DragItemsCompletedCommandProperty); }
+            get => (ICommand)GetValue(DragItemsCompletedCommandProperty);
             set { SetValue(DragItemsCompletedCommandProperty, value); }
         }
     }

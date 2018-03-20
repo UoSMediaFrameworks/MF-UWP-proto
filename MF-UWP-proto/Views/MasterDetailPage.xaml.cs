@@ -13,10 +13,7 @@ namespace MF_UWP_proto.Views
 {
     public sealed partial class MasterDetailPage : Page
     {
-        private MasterDetailViewModel ViewModel
-        {
-            get { return DataContext as MasterDetailViewModel; }
-        }
+        private MasterDetailViewModel ViewModel => DataContext as MasterDetailViewModel;
 
         public MasterDetailPage()
         {
@@ -26,26 +23,26 @@ namespace MF_UWP_proto.Views
 
         private async void MasterDetailPage_Loaded(object sender, RoutedEventArgs e)
         {
+            
             //load date if list exists
             await ViewModel.LoadDataAsync(MasterDetailsViewControl.ViewState);
         }
-        private async void getScenebyId(MediaSceneForListSchema selectedItem)
+        private async void GetScenebyId(MediaSceneForListSchema selectedItem)
         {
-            MediaSceneSchema scene;
             try
             {
                 //var task = MainPage.DefaultAPI.SceneFullGetAsync(selectedItem.Id);
                 var task = ViewModel.api.SceneFullGetAsync(selectedItem.Id);
 
-                scene = await task;
-                List<MediaAssetSchema> mediaAssetList = scene.Scene;
+                var scene = await task;
+                var mediaAssetList = scene.Scene;
 
                 //Debug.WriteLine("SceneFullGetAsync successfull+ " + scene);
                 //WriteToConsole(mediaAssetList);
                 foreach (MediaAssetSchema o in mediaAssetList)
                 {
                    // showMediaObjectWS(o);
-                    showMediaObjectClientSided(o);
+                    ShowMediaObjectClientSided(o);
                 }
 
 
@@ -56,15 +53,14 @@ namespace MF_UWP_proto.Views
             }
 
         }
-        public void showMediaObjectClientSided(MediaAssetSchema mo)
+
+        private static void ShowMediaObjectClientSided(MediaAssetSchema mo)
         {
-            MediaAssetObject mao = new MediaAssetObject(mo);
-            mao.RenderElement();
-            
+            RenderHelper.Instance.RenderElement(mo);          
         }
-        public async void showMediaObjectWS(MediaAssetSchema mo)
+        public async void ShowMediaObjectWs(MediaAssetSchema mo)
         {
-            MediaCommand mc = new MediaCommand(SessionHelper.sessionResult.RoomId, mo);
+            MediaCommand mc = new MediaCommand(SessionHelper.SessionResult.Value.RoomId, mo);
 
             try
             {
@@ -79,12 +75,12 @@ namespace MF_UWP_proto.Views
         }
         private void MasterDetailsViewControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selected = ((sender as MasterDetailsView).SelectedItem as MediaSceneForListSchema);
+            var selected = ((sender as MasterDetailsView)?.SelectedItem as MediaSceneForListSchema);
             while (ViewModel.MediaGrid.Children.Count > 0)
             {
                 ViewModel.MediaGrid.Children.RemoveAt(0);
             }
-            getScenebyId(selected);
+            GetScenebyId(selected);
         }
     }
 }

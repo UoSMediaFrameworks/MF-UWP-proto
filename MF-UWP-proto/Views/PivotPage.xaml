@@ -11,10 +11,11 @@
     mc:Ignorable="d">
 
     <Grid>
+<!-- The pivot page contains the tabs for the navigation across the app-->
         <Pivot x:Uid="PivotPage">
-            <PivotItem x:Uid="PivotItem_Login">
+            <PivotItem x:Uid="PivotItem_LandingPage">
                 <Frame>
-                    <views:Login/>
+                    <views:Landing_Page/>
                 </Frame>
             </PivotItem>
             <PivotItem x:Uid="PivotItem_Main">
@@ -27,11 +28,11 @@
                     <views:MasterDetailPage/>
                 </Frame>
             </PivotItem>
-            <PivotItem x:Uid="PivotItem_MediaPlayer">
+     <!--       <PivotItem x:Uid="PivotItem_MediaPlayer">
                 <Frame>
                     <views:MediaPlayerPage/>
                 </Frame>
-            </PivotItem>
+            </PivotItem>-->
         </Pivot>
     </Grid>
 </Page>

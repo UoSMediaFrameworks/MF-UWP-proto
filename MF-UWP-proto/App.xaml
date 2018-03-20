@@ -4,18 +4,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:vms="using:MF_UWP_proto.ViewModels"
     >
-
+ <!--The app xaml contains all the application resources piut together-->
     <Application.Resources>
         <ResourceDictionary>
+
             <vms:ViewModelLocator x:Key="Locator" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/_Colors.xaml"/>
                 <ResourceDictionary Source="/Styles/_FontSizes.xaml"/>
                 <ResourceDictionary Source="/Styles/_Thickness.xaml"/>
-
+                <ResourceDictionary Source="/Styles/DeviceFamilyResource.xaml"/>
                 <ResourceDictionary Source="/Styles/TextBlock.xaml"/>
                 <ResourceDictionary Source="/Styles/Page.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+     
         </ResourceDictionary>
+    
     </Application.Resources>
 </Application>

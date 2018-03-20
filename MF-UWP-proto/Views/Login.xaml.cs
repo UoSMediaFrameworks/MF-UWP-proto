@@ -17,7 +17,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+/*This page represents the Login to the system.
+ It should be active and visible if the users does not have a sesshion token
+ or has Logged out manually.*/
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace MF_UWP_proto.Views
@@ -29,11 +31,8 @@ namespace MF_UWP_proto.Views
     {
         private object rootPage;
 
-        private Login ViewModel
-        {
-            get { return DataContext as Login; }
-        }
-        
+        private Login ViewModel => DataContext as Login;
+
 
         public Login()
         {
@@ -41,7 +40,7 @@ namespace MF_UWP_proto.Views
         }
         private void PassportSignInButton_Click(object sender, RoutedEventArgs e)
         {
-            AutcheticateWithWSAsync(UsernameTextBox.Text);
+            AutcheticateWithWSAsync(UsernameTextBox.Password);
             ErrorMessage.Text = "";
         }
         private async System.Threading.Tasks.Task AutcheticateWithWSAsync(string password)
@@ -56,7 +55,7 @@ namespace MF_UWP_proto.Views
                 SessionResult result = await task;
                 // Upadting session and Api Key for future api calls until session needs to be renewed
                 SessionHelper.UpdateSession(result);
-                SocketHelper.ConnectToWS();
+                SocketHelper.ConnectToWs();
                 Configuration.Default.AddApiKey("X-API-Key", result.Token);
                 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
                 // Configuration.Default.ApiKeyPrefix.Add("X-API-Key", "Bearer");

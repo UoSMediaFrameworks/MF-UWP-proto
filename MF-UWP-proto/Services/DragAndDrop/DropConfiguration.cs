@@ -47,67 +47,67 @@ namespace MF_UWP_proto.Services.DragAndDrop
 
         public ICommand DropBitmapCommand
         {
-            get { return (ICommand)GetValue(DropBitmapCommandProperty); }
+            get => (ICommand)GetValue(DropBitmapCommandProperty);
             set { SetValue(DropBitmapCommandProperty, value); }
         }
 
         public ICommand DropHtmlCommand
         {
-            get { return (ICommand)GetValue(DropHtmlCommandProperty); }
+            get => (ICommand)GetValue(DropHtmlCommandProperty);
             set { SetValue(DropHtmlCommandProperty, value); }
         }
 
         public ICommand DropRtfCommand
         {
-            get { return (ICommand)GetValue(DropRtfCommandProperty); }
+            get => (ICommand)GetValue(DropRtfCommandProperty);
             set { SetValue(DropRtfCommandProperty, value); }
         }
 
         public ICommand DropStorageItemsCommand
         {
-            get { return (ICommand)GetValue(DropStorageItemsCommandProperty); }
+            get => (ICommand)GetValue(DropStorageItemsCommandProperty);
             set { SetValue(DropStorageItemsCommandProperty, value); }
         }
 
         public ICommand DropTextCommand
         {
-            get { return (ICommand)GetValue(DropTextCommandProperty); }
+            get => (ICommand)GetValue(DropTextCommandProperty);
             set { SetValue(DropTextCommandProperty, value); }
         }
 
         public ICommand DropApplicationLinkCommand
         {
-            get { return (ICommand)GetValue(DropApplicationLinkCommandProperty); }
+            get => (ICommand)GetValue(DropApplicationLinkCommandProperty);
             set { SetValue(DropApplicationLinkCommandProperty, value); }
         }
 
         public ICommand DropWebLinkCommand
         {
-            get { return (ICommand)GetValue(DropWebLinkCommandProperty); }
+            get => (ICommand)GetValue(DropWebLinkCommandProperty);
             set { SetValue(DropWebLinkCommandProperty, value); }
         }
 
         public ICommand DropDataViewCommand
         {
-            get { return (ICommand)GetValue(DropDataViewCommandProperty); }
+            get => (ICommand)GetValue(DropDataViewCommandProperty);
             set { SetValue(DropDataViewCommandProperty, value); }
         }
 
         public ICommand DragEnterCommand
         {
-            get { return (ICommand)GetValue(DragEnterCommandProperty); }
+            get => (ICommand)GetValue(DragEnterCommandProperty);
             set { SetValue(DragEnterCommandProperty, value); }
         }
 
         public ICommand DragOverCommand
         {
-            get { return (ICommand)GetValue(DragOverCommandProperty); }
+            get => (ICommand)GetValue(DragOverCommandProperty);
             set { SetValue(DragOverCommandProperty, value); }
         }
 
         public ICommand DragLeaveCommand
         {
-            get { return (ICommand)GetValue(DragLeaveCommandProperty); }
+            get => (ICommand)GetValue(DragLeaveCommandProperty);
             set { SetValue(DragLeaveCommandProperty, value); }
         }
 

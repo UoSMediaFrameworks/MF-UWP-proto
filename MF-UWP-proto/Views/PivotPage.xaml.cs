@@ -9,10 +9,7 @@ namespace MF_UWP_proto.Views
 {
     public sealed partial class PivotPage : Page
     {
-        private PivotViewModel ViewModel
-        {
-            get { return DataContext as PivotViewModel; }
-        }
+        private PivotViewModel ViewModel => DataContext as PivotViewModel;
 
         public PivotPage()
         {

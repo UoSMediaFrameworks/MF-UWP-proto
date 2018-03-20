@@ -9,6 +9,7 @@ using Microsoft.Practices.ServiceLocation;
 
 namespace MF_UWP_proto.ViewModels
 {
+    /*The Locator VM contains the navigation routes for the application nad its context binding*/
     public class ViewModelLocator
     {
         public ViewModelLocator()
@@ -17,11 +18,14 @@ namespace MF_UWP_proto.ViewModels
 
             SimpleIoc.Default.Register(() => new NavigationServiceEx());
             Register<PivotViewModel, PivotPage>();
+            Register<LandingPageViewModel, Landing_Page>();
             Register<LoginViewModel, Login>();
             Register<MainViewModel, MainPage>();
             Register<MasterDetailViewModel, MasterDetailPage>();
             Register<MediaPlayerViewModel, MediaPlayerPage>();
         }
+
+        public LandingPageViewModel LandingPageViewModel => ServiceLocator.Current.GetInstance<LandingPageViewModel>();
 
         public LoginViewModel LoginViewModel => ServiceLocator.Current.GetInstance<LoginViewModel>();
 
@@ -35,12 +39,12 @@ namespace MF_UWP_proto.ViewModels
 
         public NavigationServiceEx NavigationService => ServiceLocator.Current.GetInstance<NavigationServiceEx>();
 
-        public void Register<VM, V>()
-            where VM : class
+        private void Register<TVm, TV>()
+            where TVm : class
         {
-            SimpleIoc.Default.Register<VM>();
+            SimpleIoc.Default.Register<TVm>();
 
-            NavigationService.Configure(typeof(VM).FullName, typeof(V));
+            NavigationService.Configure(typeof(TVm).FullName, typeof(TV));
         }
     }
 }
